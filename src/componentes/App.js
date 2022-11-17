@@ -1,12 +1,19 @@
+import Corpo from "./Corpo";
+import NavBar from "./NavBar";
+
 export default function App() {
   return (
-    <h1>oi</h1>
-    // <div>
-    //     <Topo/>
-    //     <div class="row">
-    //         <Menu />
-    //         <Conteudo />
-    //     </div>
-    // </div>
+    <>
+      <NavBar />
+      <Corpo />
+
+      <div class="fundo-mobile">
+        <ion-icon name="home"></ion-icon>
+        <ion-icon name="search-outline"></ion-icon>
+        <ion-icon name="add-circle-outline"></ion-icon>
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-icon name="person-outline"></ion-icon>
+      </div>
+    </>
   );
 }
