@@ -5,7 +5,11 @@ export default function Post(props) {
   const [liked, setLiked] = useState(false);
 
   function savePost() {
-    setSavedPost(true);
+    if (savedPost) {
+      setSavedPost(false);
+    } else {
+      setSavedPost(true);
+    }
   }
 
   function likePostByPhoto() {
@@ -21,25 +25,11 @@ export default function Post(props) {
   }
 
   function incrementLike(qtdeLikes) {
-    if (qtdeLikes > 1000) {
-      return (
-        (qtdeLikes + 1).toString().slice(0, -3) +
-        "." +
-        (qtdeLikes + 1).toString().slice(-3)
-      );
-    } else {
-      return (qtdeLikes + 1).toString();
-    }
+    return (qtdeLikes + 1).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
   }
 
   function currentLikes(qtdeLikes) {
-    if (qtdeLikes > 1000) {
-      return (
-        qtdeLikes.toString().slice(0, -3) + "." + qtdeLikes.toString().slice(-3)
-      );
-    } else {
-      return qtdeLikes.toString();
-    }
+    return qtdeLikes.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
   }
 
   return (
@@ -99,12 +89,3 @@ export default function Post(props) {
     </>
   );
 }
-
-// const qtdeLikes = post.qtdeLikes.toString();
-// let result;
-// if (qtdeLikes.length > 3) {
-//   let index = -3;
-//   result = qtdeLikes.slice(0, index) + "." + qtdeLikes.slice(index);
-// } else {
-//   result = qtdeLikes;
-// }

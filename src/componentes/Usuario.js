@@ -5,11 +5,17 @@ export default function Ususario() {
   const [imageProfile, setImageProfile] = useState("./assets/catanacomics.svg");
 
   function changeUser() {
-    setUserName(prompt("Entre com userName"));
+    const typedName = prompt("Entre com userName");
+    if (typedName) {
+      setUserName(typedName);
+    }
   }
 
   function changeImageProfile() {
-    setImageProfile(prompt("Entre link"));
+    const enteredImageProfile = prompt("Entre link");
+    if (enteredImageProfile) {
+      setImageProfile(enteredImageProfile);
+    }
   }
 
   return (

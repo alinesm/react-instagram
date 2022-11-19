@@ -8,7 +8,7 @@ export default function Posts() {
       imagePosted: "./assets/gato-telefone.svg",
       imageLikes: "./assets/respondeai.svg",
       curtidoPor: "respondeai",
-      qtdeLikes: 101,
+      qtdeLikes: 101000000,
     },
     {
       imagePerfil: "./assets/barked.svg",
@@ -19,18 +19,6 @@ export default function Posts() {
       qtdeLikes: 99159,
     },
   ];
-
-  // const num = 12340
-  // const str = num.toString();
-  // let result;
-  // if(str.length >3){
-  //   const index = -3;
-  //   result = str.slice(0, index) + '.' + str.slice(index);
-  // } else {
-  //   result = str
-  // }
-
-  // console.log(result);
 
   return (
     <div class="posts">
