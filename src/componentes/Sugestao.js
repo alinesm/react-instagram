@@ -1,61 +1,40 @@
 export default function Sugestao() {
+  const sugestoes = [
+    {
+      imagePerfil: "./assets/bad.vibes.memes.svg",
+      perfilName: "bad.vibes.memes",
+    },
+    {
+      imagePerfil: "./assets/chibirdart.svg",
+      perfilName: "chibirdart",
+    },
+    {
+      imagePerfil: "./assets/razoesparaacreditar.svg",
+      perfilName: "razoesparaacreditar",
+    },
+    {
+      imagePerfil: "./assets/adorable_animals.svg",
+      perfilName: "adorable_animals",
+    },
+    {
+      imagePerfil: "./assets/smallcutecats.svg",
+      perfilName: "smallcutecats",
+    },
+  ];
   return (
     <>
-      <div class="sugestao">
-        <div class="usuario">
-          <img src="./assets/bad.vibes.memes.svg" />
-          <div class="texto">
-            <div class="nome">bad.vibes.memes</div>
-            <div class="razao">Segue você</div>
+      {sugestoes.map((sugestao) => (
+        <div class="sugestao">
+          <div class="usuario">
+            <img alt="" src={sugestao.imagePerfil} />
+            <div class="texto">
+              <div class="nome">{sugestao.perfilName}</div>
+              <div class="razao">Segue você</div>
+            </div>
           </div>
+          <div class="seguir">Seguir</div>
         </div>
-
-        <div class="seguir">Seguir</div>
-      </div>
-      <div class="sugestao">
-        <div class="usuario">
-          <img src="./assets/chibirdart.svg" />
-          <div class="texto">
-            <div class="nome">chibirdart</div>
-            <div class="razao">Segue você</div>
-          </div>
-        </div>
-
-        <div class="seguir">Seguir</div>
-      </div>
-      <div class="sugestao">
-        <div class="usuario">
-          <img src="./assets/razoesparaacreditar.svg" />
-          <div class="texto">
-            <div class="nome">razoesparaacreditar</div>
-            <div class="razao">Novo no Instagram</div>
-          </div>
-        </div>
-
-        <div class="seguir">Seguir</div>
-      </div>
-      <div class="sugestao">
-        <div class="usuario">
-          <img src="./assets/adorable_animals.svg" />
-          <div class="texto">
-            <div class="nome">adorable_animals</div>
-            <div class="razao">Segue você</div>
-          </div>
-        </div>
-
-        <div class="seguir">Seguir</div>
-      </div>
-      <div class="sugestao">
-        <div class="usuario">
-          <img src="./assets/smallcutecats.svg" />
-          <div class="texto">
-            <div class="nome">smallcutecats</div>
-            <div class="razao">Segue você</div>
-          </div>
-        </div>
-
-        <div class="seguir">Seguir</div>
-      </div>
+      ))}
     </>
   );
 }

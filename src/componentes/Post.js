@@ -1,74 +1,97 @@
-export default function Post() {
+import React, { useState } from "react";
+
+export default function Post(props) {
+  const [savedPost, setSavedPost] = useState(false);
+  const [liked, setLiked] = useState(false);
+
+  function savePost() {
+    setSavedPost(true);
+  }
+
+  function likePostByPhoto() {
+    setLiked(true);
+  }
+
+  function heartClick() {
+    if (liked) {
+      setLiked(false);
+    } else {
+      setLiked(true);
+    }
+  }
+
+  function incrementLike(qtdeLikes) {
+    if (qtdeLikes > 1000) {
+      return (
+        (qtdeLikes + 1).toString().slice(0, -3) +
+        "." +
+        (qtdeLikes + 1).toString().slice(-3)
+      );
+    } else {
+      return (qtdeLikes + 1).toString();
+    }
+  }
+
+  function currentLikes(qtdeLikes) {
+    if (qtdeLikes > 1000) {
+      return (
+        qtdeLikes.toString().slice(0, -3) + "." + qtdeLikes.toString().slice(-3)
+      );
+    } else {
+      return qtdeLikes.toString();
+    }
+  }
+
   return (
     <>
-      <div class="post">
+      <div data-test="post" class="post">
         <div class="topo">
           <div class="usuario">
-            <img src="./assets/meowed.svg" />
-            meowed
+            <img src={props.imagePerfil} alt="" />
+            {props.perfilName}
           </div>
           <div class="acoes">
             <ion-icon name="ellipsis-horizontal"></ion-icon>
           </div>
         </div>
 
-        <div class="conteudo">
-          <img src="./assets/gato-telefone.svg" />
+        <div data-test="post-image" class="conteudo" onClick={likePostByPhoto}>
+          <img src={props.imagePosted} alt="" />
         </div>
 
         <div class="fundo">
           <div class="acoes">
-            <div>
-              <ion-icon name="heart-outline"></ion-icon>
+            <div className="icons">
+              <div data-test="like-post" onClick={heartClick}>
+                {liked ? (
+                  <ion-icon name="heart"></ion-icon>
+                ) : (
+                  <ion-icon name="heart-outline"></ion-icon>
+                )}
+              </div>
               <ion-icon name="chatbubble-outline"></ion-icon>
               <ion-icon name="paper-plane-outline"></ion-icon>
             </div>
-            <div>
-              <ion-icon name="bookmark-outline"></ion-icon>
+            <div data-test="save-post" onClick={savePost}>
+              {savedPost ? (
+                <ion-icon name="bookmark"></ion-icon>
+              ) : (
+                <ion-icon name="bookmark-outline"></ion-icon>
+              )}
             </div>
           </div>
 
           <div class="curtidas">
-            <img src="./assets/respondeai.svg" />
+            <img src={props.imageLikes} alt="" />
             <div class="texto">
-              Curtido por <strong>respondeai</strong> e{" "}
-              <strong>outras 101.523 pessoas</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="post">
-        <div class="topo">
-          <div class="usuario">
-            <img src="./assets/barked.svg" />
-            barked
-          </div>
-          <div class="acoes">
-            <ion-icon name="ellipsis-horizontal"></ion-icon>
-          </div>
-        </div>
-
-        <div class="conteudo">
-          <img src="./assets/dog.svg" />
-        </div>
-
-        <div class="fundo">
-          <div class="acoes">
-            <div>
-              <ion-icon name="heart-outline"></ion-icon>
-              <ion-icon name="chatbubble-outline"></ion-icon>
-              <ion-icon name="paper-plane-outline"></ion-icon>
-            </div>
-            <div>
-              <ion-icon name="bookmark-outline"></ion-icon>
-            </div>
-          </div>
-
-          <div class="curtidas">
-            <img src="./assets/adorable_animals.svg" />
-            <div class="texto">
-              Curtido por <strong>adorable_animals</strong> e{" "}
-              <strong>outras 99.159 pessoas</strong>
+              Curtido por <span class="bold">{props.curtidoPor}</span> e{" "}
+              <span data-test="likes-number" class="bold">
+                outras{" "}
+                {liked
+                  ? incrementLike(props.qtdeLikes)
+                  : currentLikes(props.qtdeLikes)}{" "}
+                pessoas
+              </span>
             </div>
           </div>
         </div>
@@ -76,3 +99,12 @@ export default function Post() {
     </>
   );
 }
+
+// const qtdeLikes = post.qtdeLikes.toString();
+// let result;
+// if (qtdeLikes.length > 3) {
+//   let index = -3;
+//   result = qtdeLikes.slice(0, index) + "." + qtdeLikes.slice(index);
+// } else {
+//   result = qtdeLikes;
+// }
