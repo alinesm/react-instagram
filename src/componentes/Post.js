@@ -62,9 +62,9 @@ export default function Post(props) {
         <div class="fundo">
           <div class="acoes">
             <div className="icons">
-              <div data-test="like-post" onClick={heartClick}>
+              <div data-test="like-post" class="heartLike" onClick={heartClick}>
                 {liked ? (
-                  <ion-icon name="heart"></ion-icon>
+                  <ion-icon class="filled" name="heart"></ion-icon>
                 ) : (
                   <ion-icon name="heart-outline"></ion-icon>
                 )}
